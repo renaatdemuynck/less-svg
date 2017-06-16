@@ -1,0 +1,33 @@
+@charset 'utf-8';
+
+
+.svg(@vw; @vh; @content) {
+    @svg: escape('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 @{vw} @{vh}">@{content}</svg>');
+    @uri: 'data:image/svg+xml;charset=utf-8,@{svg}';
+    
+    background+: no-repeat center center url(@uri);
+}
+
+.svg-line(@vw; @vh; @x1: 0; @y1: 0; @x2: 100%; @y2: 100%; @color: black) {
+    .svg(@vw; @vh; '<line x1="@{x1}" y1="@{y1}" x2="@{x2}" y2="@{y2}" stroke="@{color}" />');
+}
+
+.svg-rect(@vw; @vh; @x; @y; @width; @height; @rx; @ry; @color: black) {
+    .svg(@vw; @vh; '<rect x="@{x}" y="@{y}" width="@{width}" height="@{height}" rx="@{rx}" ry="@{ry}" fill="@{color}" />');
+}
+
+.svg-circle(@vw; @vh; @cx: 50%; @cy: 50%; @r: 50%; @color: black) {
+    .svg(@vw; @vh; '<circle cx="@{cx}" cy="@{cy}" r="@{r}" fill="@{color}" />');
+}
+
+.svg-ellipse(@vw; @vh; @cx: 50%; @cy: 50%; @rx: 50%; @ry: 50%; @color: black) {
+    .svg(@vw; @vh; '<ellipse cx="@{cx}" cy="@{cy}" rx="@{rx}" ry="@{ry}" fill="@{color}" />');
+}
+
+.svg-polygon(@vw; @vh; @points; @color: black) {
+    .svg(@vw; @vh; '<polygon points="@{points}" fill="@{color}" />');
+}
+
+.svg-path(@vw; @vh; @m; @color: black) {
+    .svg(@vw; @vh; '<path m="@{m}" fill="@{color}" />');
+}
